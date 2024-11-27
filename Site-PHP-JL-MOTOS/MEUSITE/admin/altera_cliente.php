@@ -5,11 +5,11 @@
     $id = $_REQUEST['id'];
     $nome = $_REQUEST['nome'];
     $email = $_REQUEST['email'];
-    $telefone = $_REQUEST['assunto'];
+    $assunto = $_REQUEST['assunto'];
+    $mensagem = $_REQUEST['mensagem'];
 
-    // 3ª etapa
-    $sql = "UPDATE cliente SET
-    nome = '$nome', email = '$email',asunto = '$assunto',
+     $sql = "UPDATE contato SET
+    nome = '$nome', email = '$email', assunto = '$assunto', mensagem = '$mensagem' 
     WHERE id = $id";
 
     $query = mysqli_query($conexao,$sql);
