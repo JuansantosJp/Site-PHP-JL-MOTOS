@@ -1,0 +1,120 @@
+/* Estilo global */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1a1a1a; /* Fundo escuro para um tema robusto */
+    color: #f4f4f4;
+    line-height: 1.6;
+}
+
+/* Cabeçalho */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    border-bottom: 4px solid #ff4500; /* Destaque com laranja forte */
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin: 0;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+header nav {
+    margin-top: 10px;
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: color 0.3s ease-in-out;
+}
+
+header nav a:hover {
+    color: #ff4500;
+}
+
+/* Seção principal */
+main {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+main h2 {
+    color: #ff4500;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+/* Cartões de serviços */
+.service-card {
+    background: #444;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.service-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);
+}
+
+.service-card h3 {
+    color: #ff4500;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.service-card p {
+    margin: 0;
+}
+
+/* Rodapé */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    border-top: 4px solid #ff4500;
+    margin-top: 20px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9em;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2em;
+    }
+
+    header nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    header nav a {
+        margin: 5px 10px;
+    }
+
+    .service-card {
+        padding: 15px;
+    }
+
+    main {
+        padding: 10px;
+    }
+}
