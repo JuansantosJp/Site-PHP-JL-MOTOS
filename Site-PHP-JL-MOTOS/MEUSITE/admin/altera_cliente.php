@@ -1,24 +1,49 @@
 <?php
+include_once("../SITE/config.inc.php");
 
-    include_once("../config.inc.php");
+$id = isset($_GET['id']) ? $_GET['id'] : null; 
 
-    $id = $_REQUEST['id'];
-    $nome = $_REQUEST['nome'];
-    $email = $_REQUEST['email'];
-    $telefone = $_REQUEST['telefone'];
-    $cidade = $_REQUEST['cidade'];
-    $estado = $_REQUEST['estado'];
+if ($id === null) {
+    
+    die("ID do cliente não fornecido.");
+}
 
-    // 3ª etapa
-    $sql = "UPDATE cliente SET
-    nome = '$nome', email = '$email',telefone = '$telefone',
-    cidade = '$cidade',estado = '$estado'
-    WHERE id = $id";
 
-    $query = mysqli_query($conexao,$sql);
+$sql = "SELECT * FROM contato WHERE id = $id";
 
-    if($query){
-        echo "<h2>Cliente alterado com sucesso.";
-    }
 
-    mysqli_close($conexao);
+$query = mysqli_query($conexao, $sql);
+
+
+if (!$query) {
+    
+    die("Erro na consulta SQL: " . mysqli_error($conexao));
+}
+
+
+if (mysqli_num_rows($query) > 0) {
+    
+    while($contato = mysqli_fetch_array($query)) {
+?>
+
+<h3>Alterando dados do Cliente</h3>
+<form action="?pg=altera_cliente" method="post">
+    <input type="hidden" name="id" value="<?=$contato['id'];?>">
+    Nome: <input type="text" name="nome" value="<?=$contato['nome'];?>"><br>
+    E-mail: <input type="text" name="email" value="<?=$contato['email'];?>"><br> 
+    Assunto: <input type="text" name="assunto" value="<?=$contato['assunto'];?>"><br> 
+    Mensagem: <input type="text" name="mensagem" value="<?=$contato['mensagem'];?>"><br>
+    <input type="submit" value="CADASTRAR">
+</form>
+
+<?php
+   
+}
+} else {
+    
+    echo "Cliente não encontrado.";
+}
+
+
+mysqli_close($conexao);
+?>
